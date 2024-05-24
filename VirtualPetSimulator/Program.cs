@@ -39,7 +39,8 @@ namespace VirtualPet
             VirtualPet pet = new VirtualPet(petName, petType);
 
             while (true)
-            { 
+            {
+            Console.WriteLine();
             Console.WriteLine("Main Menu:");
             Console.WriteLine("1. Feed " + pet.Name);
             Console.WriteLine("2. Play with " + pet.Name);
@@ -54,20 +55,27 @@ namespace VirtualPet
                     userActionName = "Feed " + pet.Name;
                     Console.WriteLine("You have selected: " + userActionName);
                     pet.Feed();
+                    Console.WriteLine();
+                    pet.CheckStatus();
                     break;
                 case 2:
                     userActionName = "Play with " + pet.Name;
                     Console.WriteLine("You have selected: " + userActionName);
                     pet.Play();
+                    Console.WriteLine();
+                    pet.CheckStatus();
                     break;
                 case 3:
                     userActionName = "Let " + pet.Name + " rest ";
                     Console.WriteLine("You have selected: " + userActionName);
                     pet.Rest();
+                    Console.WriteLine();
+                    pet.CheckStatus();
                     break;
                 case 4:
                     userActionName = "Check " + pet.Name + "'s status";
                     Console.WriteLine("You have selected: " + userActionName);
+                    Console.WriteLine(); 
                     pet.CheckStatus();
                     break;
                 case 5:
@@ -129,7 +137,7 @@ namespace VirtualPet
             //Check status
             public void CheckStatus()
             {
-                Console.WriteLine($"Stauts for: {Name}");
+                Console.WriteLine($"Current status for: {Name}");
                 Console.WriteLine($"Hunger: {Hunger}/10, Happiness: {Happiness}/10, Health: {Health}/10");
                 CheckCriticalStatus();
             }
@@ -137,8 +145,8 @@ namespace VirtualPet
             // Check if any stat is critically low or high
             public void CheckCriticalStatus()
             {
-                if (Hunger <= 2) Console.WriteLine($"{Name} is very hungry!");
-                if (Hunger >= 8) Console.WriteLine($"{Name} is overfed!");
+                if (Hunger <= 2) Console.WriteLine($"{Name} is not so hungry!");
+                if (Hunger >= 8) Console.WriteLine($"{Name} is very hungry!");
                 if (Happiness <= 2) Console.WriteLine($"{Name} is very unhappy!");
                 if (Happiness >= 8) Console.WriteLine($"{Name} is very happy!");
                 if (Health <= 2) Console.WriteLine($"{Name} is very unhealthy!");
