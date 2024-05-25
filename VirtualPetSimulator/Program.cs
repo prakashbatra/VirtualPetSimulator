@@ -9,7 +9,7 @@ namespace VirtualPet
     {
         static void Main(string[] args)
         {
-            //Pet creation - choosing a pet type and naming it
+            //Pet creation - ask the user to choose a pet type
             Console.WriteLine("Please choose a type of pet: ");
             Console.WriteLine("1. Dog");
             Console.WriteLine("2. Cat");
@@ -32,12 +32,15 @@ namespace VirtualPet
             }
 
             Console.WriteLine("You have selected: " + petType);
+
+            //Ask the user to name the pet
             Console.WriteLine("What would you like to name your pet?");
             string petName = Console.ReadLine();
             Console.WriteLine("Welcome, let's take good care of " + petName + ".");
 
             VirtualPet pet = new VirtualPet(petName, petType);
 
+            //Display Main Menu to user
             while (true)
             {
             Console.WriteLine();
@@ -47,6 +50,8 @@ namespace VirtualPet
             Console.WriteLine("3. Let " + pet.Name + " rest ");
             Console.WriteLine("4. Check " + pet.Name + "'s status");
             Console.WriteLine("5. Exit");
+            
+            //Display mesasge based on user input and execute corresponding method from VirtualPet class
             int userActionCode = int.Parse(Console.ReadLine());
             string userActionName = "";
             switch (userActionCode)
@@ -134,7 +139,7 @@ namespace VirtualPet
                 Happiness = Math.Max(Happiness - 1, 0);
                 Console.WriteLine($"{Name} is resting. Health increased, Happiness decreased slightly.");
             }
-            //Check status
+            //Check status method
             public void CheckStatus()
             {
                 Console.WriteLine($"Current status for: {Name}");
