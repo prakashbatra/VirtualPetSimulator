@@ -61,27 +61,27 @@ namespace VirtualPet
                     Console.WriteLine("You have selected: " + userActionName);
                     pet.Feed();
                     Console.WriteLine();
-                    pet.CheckStatus();
+                    //pet.CheckStatus();
                     break;
                 case 2:
                     userActionName = "Play with " + pet.Name;
                     Console.WriteLine("You have selected: " + userActionName);
                     pet.Play();
                     Console.WriteLine();
-                    pet.CheckStatus();
+                    //pet.CheckStatus();
                     break;
                 case 3:
                     userActionName = "Let " + pet.Name + " rest ";
                     Console.WriteLine("You have selected: " + userActionName);
                     pet.Rest();
                     Console.WriteLine();
-                    pet.CheckStatus();
+                    //pet.CheckStatus();
                     break;
                 case 4:
                     userActionName = "Check " + pet.Name + "'s status";
                     Console.WriteLine("You have selected: " + userActionName);
                     Console.WriteLine(); 
-                    pet.CheckStatus();
+                    //pet.CheckStatus();
                     break;
                 case 5:
                     userActionName = "Exit";
@@ -89,6 +89,8 @@ namespace VirtualPet
                     Console.WriteLine("Thank you for playing!");
                     return;
             }
+                pet.TimePassage();
+                pet.CheckStatus();
         }
     }
 
@@ -147,7 +149,7 @@ namespace VirtualPet
                 CheckCriticalStatus();
             }
 
-            // Check if any stat is critically low or high
+            //Check if any stat is critically low or high
             public void CheckCriticalStatus()
             {
                 if (Hunger <= 2) Console.WriteLine($"{Name} is not so hungry!");
@@ -157,6 +159,14 @@ namespace VirtualPet
                 if (Health <= 2) Console.WriteLine($"{Name} is very unhealthy!");
                 if (Health >= 8) Console.WriteLine($"{Name} is in great health!");
             }
+
+            //Time-based changes
+            public void TimePassage()
+            {
+                Hunger = Math.Min(Hunger + 1, 10);
+                Happiness = Math.Max(Happiness - 1, 0);
+            }
+
         }
     }
 }
